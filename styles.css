@@ -8,7 +8,7 @@ body {
 
 /*Background*/
 .parallax {
-    background-image: url('images/corona.jpg');
+    background-image: url('./Assets/corona.jpg');
     min-height: 100px;
     background-attachment: fixed;
     background-position: center;
