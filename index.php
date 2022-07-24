@@ -1,5 +1,5 @@
 <!-- CSS -->
-<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="styles.css">
 <!-- Boostrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,8 +23,8 @@
 <div class="topnav" id="myTopnav" >
   <a class="active" href="#home">Αρχική</a>
   <a href="#contacts">Λίστα πιθανών επαφών με κρούσμα</a>
-  <a href="./krousma.php">Δήλωση κρούσματος</a>
-  <a href="#profile">Επεξεργασία προφίλ</a>
+  <a href="krousma.php">Δήλωση κρούσματος</a>
+  <a href="profile.php">Επεξεργασία προφίλ</a>
   <a href="#logout">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
