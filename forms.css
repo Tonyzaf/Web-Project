@@ -1,7 +1,6 @@
 :root {
-    --primary: #45a29e;
-    --secondary: #45a29e;
-    --border-color: #dee2e6;
+    --primary: #1f2833;
+    --secondary: #1f2833;
     --max-width: 1140px;
     --border-radius: 0.25rem;
     --button-text: #fff;
@@ -10,7 +9,7 @@
     --text-bright: #000;
     --body-bg-color: #f9fafb;
     --footer-bg-color: #fff;
-    --form-bg-color: #fff;
+    --form-bg-color: #45a29e;
     --input-text-color: #000;
     --input-text-disabled: #7a7a7a;
     --input-placeholder-color: #c2c2c2;

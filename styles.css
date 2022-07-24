@@ -173,17 +173,25 @@ body {
 #infection{
   margin-top: 20px;
   margin-left: 10px;
+  
+  background-color: #1f2833;
+  color: white;
+  
+  border-radius: 0.25rem;
+  border-width: 2px;
+  border-color: #1f2833;
 }
 #submitbutton{
   margin-top: 20px;
   margin-left: 10px;
-  background-color: #fff;
+  background-color: #1f2833;
+  color: white;
   border: 1px solid #0b0c10;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 0.25rem;
 }
 #submitbutton:hover{
-  background-color: #ecedee;
-  color: #0b0c10;
+  border-color:white;
+  border-width: 2px;
 }
 .check{
   padding-bottom: 20px;
@@ -222,7 +230,12 @@ body {
 
 /*Registration Screen*/
 
-.submitbutton {
-  background-color: #45a29e;
+.registrationform{
+  margin-top: 7vh;
 }
 
+/*Login Screen*/
+
+.loginform{
+  margin-top: 25vh;
+}
