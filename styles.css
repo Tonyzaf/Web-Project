@@ -78,6 +78,7 @@ body {
     text-align: left;
   }
 }
+
 /*Search*/
 
 * {
@@ -217,5 +218,11 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+}
+
+/*Registration Screen*/
+
+.submitbutton {
+  background-color: #45a29e;
 }
 
