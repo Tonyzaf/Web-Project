@@ -152,18 +152,18 @@ body {
   display: block;
   width: 60%;
   font-size: 20px;
-  background: #45a29e;
-  padding-left: 40px;
+  background: #1f2833;
   padding-top: 20px;
-  padding-right: 40px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px;
+  text-align: center;
   opacity: 0.9;
   border: 1px solid #0b0c10;
   border-radius: 25px 25px 25px 25px;
   color: #fff;
 }
+
 .plaisio1 h1{
   text-align: center;
 }
@@ -174,8 +174,8 @@ body {
   margin-top: 20px;
   margin-left: 10px;
   
-  background-color: #1f2833;
-  color: white;
+  background-color: white;
+  color: #1f2833;
   
   border-radius: 0.25rem;
   border-width: 2px;
@@ -184,9 +184,9 @@ body {
 #submitbutton{
   margin-top: 20px;
   margin-left: 10px;
-  background-color: #1f2833;
-  color: white;
-  border: 1px solid #0b0c10;
+  background-color: #45a29e;
+  color: #1f2833;
+  border: none;
   border-radius: 0.25rem;
 }
 #submitbutton:hover{
@@ -195,7 +195,7 @@ body {
 }
 .check{
   padding-bottom: 20px;
-  color: red;
+  color: #66fcf1;
 }
 
 /*Change info*/
@@ -204,7 +204,7 @@ body {
   display: block;
   width: 70%;
   font-size: 20px;
-  background: #45a29e;
+  background: #1f2833;
   padding-left: 40px;
   padding-top: 20px;
   padding-right: 40px;
@@ -213,7 +213,7 @@ body {
   margin-top: 150px;
   opacity: 0.9;
   border: 1px solid #0b0c10;
-  border-radius: 25px 25px 25px 25px;
+  border-radius: 1rem;
   color: #fff;
 }
 .plaisio2 h1{
@@ -226,6 +226,12 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+}
+
+.profile-form {
+  margin-left:15px; 
+  width:150px;
+  border-radius: 0.25rem;
 }
 
 /*Registration Screen*/

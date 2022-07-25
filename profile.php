@@ -23,7 +23,7 @@
   <a href="index.php">Αρχική</a>
   <a href="#contacts">Λίστα πιθανών επαφών με κρούσμα</a>
   <a href="krousma.php">Δήλωση κρούσματος</a>
-  <a class="active" href="profile.php">Επεξεργασία προφίλ</a>
+  <a class="active" href="profile.php">Το Προφίλ Μου</a>
   <a href="#logout">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()" >
     <i class="fa fa-bars" ></i>
@@ -37,19 +37,19 @@
 	<table>
 	  <tr>
 		<td>Όνομα χρήστη :</td>
-		<td><input type="text" id="name" name="name" value="kapwsnmpaineitonoma" style="margin-left:15px; width:150px;"></td>
+		<td><input type="text" id="name" name="name" value="Current Name" class = 'profile-form'></td>
 	  </tr>
       <tr>
         <td>Εισάγετε τον τωρινό κωδικό πρόσβασης:</td>
-		<td><input type="text" id="lastpassword" name="lastpassword" style="margin-left:15px; width:150px;"></td>
+		<td><input type="text" id="lastpassword" name="lastpassword" class = 'profile-form'></td>
 	  </tr>
       <tr>
         <td>Εισάγετε τον νέο κωδικό πρόσβασης:</td>
-		<td><input type="text" id="newpassword" name="newpassword" style="margin-left:15px; width:150px;" ></td>
+		<td><input type="text" id="newpassword" name="newpassword" class = 'profile-form'></td>
 	  </tr>
       <tr>
         <td>Επιβεβαίωση του νέου κωδικού πρόσβασης:</td>
-		<td><input type="text" id="checknewpassword" name="checknewpassword" style="margin-left:15px; width:150px;" ></td>
+		<td><input type="text" id="checknewpassword" name="checknewpassword" class = 'profile-form'></td>
 	  </tr>
 	</table>
     <input type="submit"id="submitbutton" style="margin-left:45%;margin-top:20px;">
@@ -60,7 +60,7 @@
         $check = $_POST['newpassword'];
         $pass = $_POST['checknewpassword'];
         if ($check!=$pass)
-        echo "!Οι κωδικοί που εισάγατε διαφέρουν";
+        echo "! Οι κωδικοί που εισάγατε διαφέρουν !";
         }
     ?>
   </div>
