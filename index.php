@@ -24,7 +24,7 @@
   <a class="active" href="#home">Αρχική</a>
   <a href="#contacts">Λίστα πιθανών επαφών με κρούσμα</a>
   <a href="krousma.php">Δήλωση κρούσματος</a>
-  <a href="profile.php">Επεξεργασία προφίλ</a>
+  <a href="profile.php">Το Προφίλ Μου</a>
   <a href="#logout">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>

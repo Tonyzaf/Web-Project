@@ -23,7 +23,7 @@
   <a href="index.php">Αρχική</a>
   <a href="#contacts">Λίστα πιθανών επαφών με κρούσμα</a>
   <a class="active" href="krousma.php">Δήλωση κρούσματος</a>
-  <a href="profile.php">Επεξεργασία προφίλ</a>
+  <a href="profile.php">Το Προφίλ Μου</a>
   <a href="#logout">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()" >
     <i class="fa fa-bars" ></i>
@@ -33,7 +33,7 @@
 <div class="plaisio1">
   <h1> Δήλωση κρούσματος </h1>
   <form method="post" >
-    <label for="infection">Παρακαλώ εισάγετε ημερομηνία διάγνωσης:</label>
+    <label class = 'infection' for="infection">Παρακαλώ εισάγετε ημερομηνία διάγνωσης:</label>
     <input type="date" id="infection" name="infection">
     <input type="submit"id="submitbutton">
   </form>
@@ -44,7 +44,7 @@
         $today = strtotime(date("y-m-d"));
         $diff = $check-$today;
         if ($diff>0)
-        echo "!Παρακαλώ εισάγετε έγκυρη ημερομηνία διάγνωσης";
+        echo "! Παρακαλώ εισάγετε έγκυρη ημερομηνία διάγνωσης !";
       }
     ?>
   </div> 
