@@ -49,9 +49,38 @@ if ($link === false) {
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <button className='submitbutton' type="submit">Log In</button>
+                <button class='submitbutton' type="submit">Log In</button>
                 <footer>Not Registered Yet? <a href="register.php">Click here</a></footer>
             </form>
+            <?php
+            session_start();
+            if(isset($_SESSION['username'])){
+                header("Location: index.php");
+            }
+            if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['username'])){
+                $user = $_POST['username'];
+                $conn=mysqli_connect("localhost","root","","web");
+                $loginq = "SELECT password FROM users WHERE username = '$user'";
+                $result = $conn->query($loginq);
+                $tmpass = $result->fetch_array()[0] ?? '';
+                $pass = $_POST['password'];
+                $loginq = "SELECT isadmin FROM users WHERE username = '$user'";
+                $result = $conn->query($loginq);
+                $isadmin = $result->fetch_array()[0] ?? '';
+                if ($tmpass === $pass){
+                    $_SESSION['username'] = $_POST['username'];
+                    $_SESSION['password'] = $pass;
+                    $_SESSION['isadmin'] = $isadmin;
+                    if($isadmin == 0)
+                        header("refresh:0;url=index.php");
+                    else 
+                        header("refresh:0;url=adminindex.php");
+                }
+                else{
+                    echo '<span style="color:#FFF;text-align:center;"> login failed!';
+                }
+            }
+            ?>
         </main>
     </div>
 
