@@ -5,6 +5,20 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- JS -->
 <script src="./Scripts/Home.js"></script>
+<!-- DB connect -->
+<?php      
+        $conn=mysqli_connect("localhost","root","","web");
+        if($conn===false){
+            die("Error: could not connect : " .mysqli_connect_error());
+        }
+?>
+<!-- Session -->
+<?php
+  session_start();
+  if(!isset($_SESSION['username'])){
+    header("Location: login.php");
+  }
+?>
 
 <html>
 
@@ -21,14 +35,23 @@
 <!-- NavBar -->
 <div class="topnav" id="myTopnav" >
   <a href="index.php">Αρχική</a>
-  <a href="#contacts">Λίστα πιθανών επαφών με κρούσμα</a>
-  <a href="krousma.php">Δήλωση κρούσματος</a>
-  <a class="active" href="profile.php">Το Προφίλ Μου</a>
-  <a href="#logout">Αποσύνδεση</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()" >
-    <i class="fa fa-bars" ></i>
+  <a href="contacts.php">Λίστα Πιθανών Επαφών με Κρούσμα</a>
+  <a href="krousma.php">Δήλωση Κρούσματος</a>
+  <div class="dropdown">
+    <button class="dropbtn" id="active">Το Προφίλ Μου
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a class="active" href="profile.php">Επεξεργασία Στοιχείων</a>
+      <a href="diagnosishistory.php">Ιστορικό Διαγνώσεων</a>
+      <a href="visithistory.php">Ιστορικό Επισκέψεων</a>
+    </div>
+  </div>  
+  <a href="logout.php">Αποσύνδεση</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
   </a>
-</div> 
+</div>
 
 <!-- Info change -->
 <div class="plaisio2">
@@ -37,22 +60,22 @@
 	<table>
 	  <tr>
 		<td>Όνομα χρήστη :</td>
-		<td><input type="text" id="name" name="name" value="Current Name" class = 'profile-form'></td>
+		<td><input type="text" id="name" name="name" value=<?php echo $_SESSION['username']?> class = 'profile-form'></td>
 	  </tr>
-      <tr>
-        <td>Εισάγετε τον τωρινό κωδικό πρόσβασης:</td>
+    <tr>
+      <td>Εισάγετε τον τωρινό κωδικό πρόσβασης:</td>
 		<td><input type="text" id="lastpassword" name="lastpassword" class = 'profile-form'></td>
 	  </tr>
-      <tr>
-        <td>Εισάγετε τον νέο κωδικό πρόσβασης:</td>
+    <tr>
+      <td>Εισάγετε τον νέο κωδικό πρόσβασης:</td>
 		<td><input type="text" id="newpassword" name="newpassword" class = 'profile-form'></td>
 	  </tr>
-      <tr>
-        <td>Επιβεβαίωση του νέου κωδικού πρόσβασης:</td>
+    <tr>
+      <td>Επιβεβαίωση του νέου κωδικού πρόσβασης:</td>
 		<td><input type="text" id="checknewpassword" name="checknewpassword" class = 'profile-form'></td>
 	  </tr>
 	</table>
-    <input type="submit"id="submitbutton" style="margin-left:45%;margin-top:20px;">
+    <input type="submit"id="submitbutton" >
   </form> 
   <div class="check"style="margin-left:33%;">
     <?php

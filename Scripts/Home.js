@@ -5,7 +5,7 @@ var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
 var map = L.map('map').setView(latlng, 13)
 
 var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-    maxZoom: 18,
+    maxZoom: 13,
     subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(map);
 

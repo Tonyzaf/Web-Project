@@ -5,6 +5,20 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- JS -->
 <script src="./Scripts/Home.js"></script>
+<!-- DB connect -->
+<?php      
+        $conn=mysqli_connect("localhost","root","","web");
+        if($conn===false){
+            die("Error: could not connect : " .mysqli_connect_error());
+        }
+?>
+<!-- Session -->
+<?php
+  session_start();
+  if(!isset($_SESSION['username'])){
+    header("Location: login.php");
+  }
+?>
 
 <html>
 
@@ -21,14 +35,23 @@
 <!-- NavBar -->
 <div class="topnav" id="myTopnav" >
   <a href="index.php">Αρχική</a>
-  <a href="#contacts">Λίστα πιθανών επαφών με κρούσμα</a>
-  <a class="active" href="krousma.php">Δήλωση κρούσματος</a>
-  <a href="profile.php">Το Προφίλ Μου</a>
-  <a href="#logout">Αποσύνδεση</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()" >
-    <i class="fa fa-bars" ></i>
+  <a href="contacts.php">Λίστα Πιθανών Επαφών με Κρούσμα</a>
+  <a class="active" href="krousma.php">Δήλωση Κρούσματος</a>
+  <div class="dropdown">
+    <button class="dropbtn">Το Προφίλ Μου
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="profile.php">Επεξεργασία Στοιχείων</a>
+      <a href="diagnosishistory.php">Ιστορικό Διαγνώσεων</a>
+      <a href="visithistory.php">Ιστορικό Επισκέψεων</a>
+    </div>
+  </div>  
+  <a href="logout.php">Αποσύνδεση</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
   </a>
-</div> 
+</div>
 
 <div class="plaisio1">
   <h1> Δήλωση κρούσματος </h1>
@@ -37,14 +60,37 @@
     <input type="date" id="infection" name="infection">
     <input type="submit"id="submitbutton">
   </form>
+
   <div class="check">
     <?php
       if(isset($_POST['infection'])){
         $check=strtotime($_POST['infection']);
         $today = strtotime(date("y-m-d"));
         $diff = $check-$today;
+        $user=$_SESSION['username'];
+        $sql="SELECT infectiondate FROM infection WHERE username='$user' ORDER BY infectiondate DESC LIMIT 1";
+        $result = mysqli_query($conn, $sql);
+        $res=$result->fetch_array()[0] ?? '';
+        $date1=date_create($res);
+        $date2=date_create($_POST['infection']);
+        $interval=date_diff($date1,$date2);
+        $test=$interval->format('%R%a');
+        $dif=(int)$test;
         if ($diff>0)
-        echo "! Παρακαλώ εισάγετε έγκυρη ημερομηνία διάγνωσης !";
+          echo "! Παρακαλώ εισάγετε έγκυρη ημερομηνία διάγνωσης !";
+        else if($dif<=14 && $dif>0)
+          echo "! Πρέπει να παρέλθουν τουλάχιστον 14 ημέρες για εκ νέου δήλωση !".$dif;
+        else {
+          $date=$_POST['infection'];
+          $user=$_SESSION['username'];
+          //NA ΓΡΑΨΩ ΣΩΣΤΑ ΤΟ ΙΝΣΕΡΤ ΟΤΑΝ ΦΤΙΑΧΤΕΙ Η ΒΑΣΗ
+          $sql="INSERT INTO infection (username,infectiondate) VALUES ('$user','$date') ";
+          if (mysqli_query($conn, $sql)) {
+            echo "Η ημερομηνία καταχωρήθηκε επιτυχώς";
+          } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+          }
+        }
       }
     ?>
   </div> 
