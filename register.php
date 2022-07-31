@@ -5,22 +5,14 @@
 <!-- Boostrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'web');
-
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// Check connection
-if ($link === false) {
-    die("ERROR: Could not connect to DataBase. " . mysqli_connect_error());
-}
+<!-- JS -->
+<script src="./Scripts/Home.js"></script>
+<!-- DB connect -->
+<?php      
+        $conn=mysqli_connect("localhost","root","","web");
+        if($conn===false){
+            die("Error: could not connect : " .mysqli_connect_error());
+        }
 ?>
 
 <html>
@@ -39,44 +31,53 @@ if ($link === false) {
     <div class='container registrationform'>
         <main>
             <form action="register.php" method="post">
-                <h1>Sign Up to Corona Tracker</h1>
+                <h1>Εγγραφείτε στο Corona Tracker</h1>
                 <div>
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username">
+                    <label for="username">Όνομα χρήστη:</label>
+                    <input type="text" name="username" id="username" required="required">
                 </div>
                 <div>
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" required="required">
                 </div>
                 <div>
-                    <label for="firstname">First Name:</label>
-                    <input type="firstname" name="firstname" id="firstname">
+                    <label for="pw1">Κωδικός πρόσβασης:</label>
+                    <input type="password" name="pwd1" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,}" required="required" minlength="8">
                 </div>
                 <div>
-                    <label for="lastname">Last Name:</label>
-                    <input type="lastname" name="lastname" id="lastname">
+                    <label for="pw2">Επιβεβαίωση κωδικού πρόσβασης:</label>
+                    <input type="password" name="pwd2" id="pwd2" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,}" minlength="8">
                 </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <div>
-                    <label for="password2">Confirm Password:</label>
-                    <input type="password" name="password2" id="password2">
-                </div>
-                <div>
-                    <label for="agree">
-                        <input type="checkbox" name="agree" id="agree" value="yes" /> I agree
-                        with the
-                        <a href="#" title="term of services">term of services</a>
-                    </label>
-                </div>
-                <button className='submitbutton' type="submit">Register</button>
-                <footer>Already a member? <a href="login.php">Login here</a></footer>
+                <button className='submitbutton' type="submit" name="submit"  id="submit" onclick="checkform()">Εγγραφή</button>
+                <footer>Είστε ήδη μέλος; <a href="login.php">Συνδεθείτε εδώ</a></footer>
+                <?php 
+                    if(isset($_POST['submit'])){
+                        $username=$_POST['username'];
+                        $email=$_POST['email'];
+                        $password1=$_POST['pwd1'];
+                        $password2=$_POST['pwd2'];
+                        $sql_u = "SELECT * FROM users WHERE username='$username'";
+                        $sql_e = "SELECT * FROM users WHERE email='$email'";
+                        $res_u = mysqli_query($conn, $sql_u);
+                        $res_e = mysqli_query($conn, $sql_e);
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+                            echo"To email δεν έχει έγκυρη μορφή";
+                        else if ($password1!=$password2)
+                            echo "Οι κωδικοί πρόσβασης δεν μπορούν να διαφέρουν!";
+                        else if (mysqli_num_rows($res_u) != 0) 
+                            echo "Συγγνώμη...Το Username είναι πιασμένο.Δοκιμάστε Ξανά!";
+                        else if(mysqli_num_rows($res_e) != 0)
+                            echo "Συγγνώμη...Το e-mail είναι πιασμένο.Δοκιμάστε Ξανά!";
+                        else{
+                            $sqlq = "INSERT INTO users (isadmin,username,email,password) VALUES ('0','$username','$email','$password1')";
+                            if(mysqli_query($conn,$sqlq))
+                                echo "Εγγραφήκατε Επιτυχώς!";
+                        }
+                    }
+                ?>
             </form>
         </main>
     </div>
-
 </body>
 
 </html>

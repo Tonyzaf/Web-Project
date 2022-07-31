@@ -76,10 +76,14 @@
         $interval=date_diff($date1,$date2);
         $test=$interval->format('%R%a');
         $dif=(int)$test;
-        if ($diff>0)
+        if (empty($check))
+          echo "Παρακαλώ εισάγετε ημερομηνία";
+        else if($diff>0)
           echo "! Παρακαλώ εισάγετε έγκυρη ημερομηνία διάγνωσης !";
         else if($dif<=14 && $dif>0)
-          echo "! Πρέπει να παρέλθουν τουλάχιστον 14 ημέρες για εκ νέου δήλωση !".$dif;
+          echo "! Πρέπει να παρέλθουν τουλάχιστον 14 ημέρες για εκ νέου δήλωση !";
+        else if ($dif<0 && $res!=0)
+          echo" Υπάρχει πιο πρόσφατη δήλωση νόσησης ";
         else {
           $date=$_POST['infection'];
           $user=$_SESSION['username'];
