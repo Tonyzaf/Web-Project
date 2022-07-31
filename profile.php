@@ -64,28 +64,49 @@
 	  </tr>
     <tr>
       <td>Εισάγετε τον τωρινό κωδικό πρόσβασης:</td>
-		<td><input type="text" id="lastpassword" name="lastpassword" class = 'profile-form'></td>
+		<td><input type="password" id="lastpassword" name="lastpassword" class = 'profile-form' required="required" minlength="8"></td>
 	  </tr>
     <tr>
       <td>Εισάγετε τον νέο κωδικό πρόσβασης:</td>
-		<td><input type="text" id="newpassword" name="newpassword" class = 'profile-form'></td>
+		<td><input type="password" id="pwd1" name="newpassword" class = 'profile-form' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,}" required="required" minlength="8"></td>
 	  </tr>
     <tr>
       <td>Επιβεβαίωση του νέου κωδικού πρόσβασης:</td>
-		<td><input type="text" id="checknewpassword" name="checknewpassword" class = 'profile-form'></td>
+		<td><input type="password" id="pwd2" name="checknewpassword" class = 'profile-form' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,}" required="required" minlength="8"></td>
 	  </tr>
 	</table>
-    <input type="submit"id="submitbutton" >
+    <input type="submit"id="submitbutton" onclick="checkform()">
   </form> 
-  <div class="check"style="margin-left:33%;">
+  <div class="check">
     <?php
-        if(isset($_POST['newpassword'])&&($_POST['checknewpassword'])){
+      if( isset($_POST['lastpassword']) and isset($_POST['lastpassword']) and isset($_POST['lastpassword']) ){
+        $username = $_SESSION['username'];
+        $newusername = $_POST['name'];
+        $password = $_POST['lastpassword'];
         $check = $_POST['newpassword'];
-        $pass = $_POST['checknewpassword'];
-        if ($check!=$pass)
-        echo "! Οι κωδικοί που εισάγατε διαφέρουν !";
-        }
-    ?>
+        $pass = $_POST['checknewpassword'];  
+        $sql_p = "SELECT * FROM users WHERE username = '$username' AND  NOT password = '$password' ";
+        $result = mysqli_query($conn, $sql_p);
+        if (mysqli_num_rows($result) != 0)
+          echo "Εισάγατε λάθος κωδικό!";  
+        else { 
+          $sql_u = "SELECT * FROM users WHERE username='$newusername'";
+          $res_u = mysqli_query($conn, $sql_u);
+          if ((mysqli_num_rows($res_u) != 0) && ($username!=$newusername)) 
+            echo  "Συγγνώμη...Το Username είναι πιασμένο. Δοκιμάστε Ξανά!";
+          else {
+            if ($check!=$pass)
+              echo "Οι κωδικοί που εισάγατε διαφέρουν "; 
+            $sqlq= "UPDATE users SET username = '$newusername' WHERE username = '$username' ";
+            if(mysqli_query($conn,$sqlq))
+              $_SESSION['username']= $newusername;
+            $sqlq= "UPDATE users SET password = '$pass' WHERE username = '$newusername' ";
+            if(mysqli_query($conn,$sqlq))
+              echo "'Εγινε η αλλαγή";
+          }
+        }    	
+      }
+    ?>   
   </div>
 </div> 
 
