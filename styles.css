@@ -291,6 +291,16 @@ body {
 
 /*Login Screen*/
 
-.loginform{
+.loginform {
   margin-top: 25vh;
+ }
+
+ /*Upload POIs Form*/
+
+ .uploadpois {
+  margin-top: 450px;
+ }
+
+ .submitbutton {
+  background-color: #1f2833;
  }

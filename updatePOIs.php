@@ -34,14 +34,14 @@
 
 <!-- NavBar -->
 <div class="topnav" id="myTopnav" >
-  <a class="active" href="adminindex.php">Στατιστικά</a>
+  <a href="adminindex.php">Στατιστικά</a>
   <div class="dropdown">
-    <button class="dropbtn">Διαχείρηση Δεδομένων
+    <button class="dropbtn" id = "active">Διαχείρηση Δεδομένων
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
+    <div class = "dropdown-content">
       <a href="uploadPOIs.php">Ανέβασμα Δεδομένων</a>
-      <a href="updatePOIs.php">Ενημέρωση Δεδομένων</a>
+      <a class = "active" href="updatePOIs.php">Ενημέρωση Δεδομένων</a>
       <a href="deletePOIs.php">Διαγραφή Δεδομένων</a>
     </div>
   </div>  
