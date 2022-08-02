@@ -15,22 +15,22 @@ CREATE TABLE infection (
 );
 
 CREATE TABLE pois (
-    id VARCHAR UNIQUE NOT NULL PRIMARY KEY,
-    poiname VARCHAR NOT NULL,
-    poiaddress VARCHAR NOT NULL,
+    id VARCHAR(50) PRIMARY KEY NOT NULL,
+    poiname VARCHAR(50) NOT NULL,
+    poiaddress VARCHAR(50) NOT NULL,
     poilat FLOAT NOT NULL,
     poilng FLOAT NOT NULL
 );
 
 CREATE TABLE poitypes (
-    id VARCHAR PRIMARY KEY NOT NULL,
-    poitype VARCHAR NOT NULL
+    id VARCHAR(50) NOT NULL,
+    poitype VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE poitimes(
-    id VARCHAR PRIMARY KEY NOT NULL,
-    day VARCHAR NOT NULL,
-    hour VARCHAR NOT NULL,
+    id VARCHAR(50) NOT NULL,
+    day VARCHAR(50) NOT NULL,
+    hour VARCHAR(50) NOT NULL,
     popularity INT
 );
 
