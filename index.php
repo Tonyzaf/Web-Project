@@ -7,10 +7,10 @@
 <script src="./Scripts/Home.js"></script>
 <!-- DB connect -->
 <?php      
-        $conn=mysqli_connect("localhost","root","","web");
-        if($conn===false){
-            die("Error: could not connect : " .mysqli_connect_error());
-        }
+  $conn=mysqli_connect("localhost","root","","web");
+  if($conn===false){
+      die("Error: could not connect : " .mysqli_connect_error());
+  }
 ?>
 <!-- Session -->
 <?php
