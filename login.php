@@ -55,10 +55,14 @@
                         $loginq = "SELECT isadmin FROM users WHERE username = '$user'";
                         $result = $conn->query($loginq);
                         $isadmin = $result->fetch_array()[0] ?? '';
+                        $loginq = "SELECT id FROM users WHERE username = '$user'";
+                        $result = $conn->query($loginq);
+                        $id = $result->fetch_array()[0] ?? '';
                         if ($tmpass === $pass){
                             $_SESSION['username'] = $_POST['username'];
                             $_SESSION['password'] = $pass;
                             $_SESSION['isadmin'] = $isadmin;
+                            
                             if(!$isadmin)
                                 header("refresh:0;url=index.php");
                             else if ($isadmin)

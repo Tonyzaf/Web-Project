@@ -7,10 +7,10 @@
 <script src="./Scripts/Home.js"></script>
 <!-- DB connect -->
 <?php      
-        $conn=mysqli_connect("localhost","root","","web");
-        if($conn===false){
-            die("Error: could not connect : " .mysqli_connect_error());
-        }
+  $conn=mysqli_connect("localhost","root","","web");
+  if($conn===false){
+      die("Error: could not connect : " .mysqli_connect_error());
+  }
 ?>
 <!-- Session -->
 <?php
@@ -57,17 +57,17 @@
 <div class="plaisio2">
   <h1> Ιστορικό Διαγνώσεων με COVID-19</h1>
   <?php
-    $sql="SELECT infectiondate FROM infection";
+    $id = $_SESSION['id'];
+    $sql="SELECT infectiondate FROM infection WHERE id='$id'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-      // output data of each row
       $count= 0;
       while($row = $result->fetch_assoc()) {
         $count++;
         echo "Διάγνωση ".$count."η :" . $row["infectiondate"]. "<br>";
       }
     } else {
-      echo "0 results";
+      echo "Δεν υπάρχει καμία διάγνωση";
     }
   ?>        
 </div>

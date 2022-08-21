@@ -64,11 +64,11 @@
   <div class="check">
     <?php
       if(isset($_POST['infection'])){
+        $id = $_SESSION['id'];
         $check=strtotime($_POST['infection']);
         $today = strtotime(date("y-m-d"));
         $diff = $check-$today;
-        $user=$_SESSION['username'];
-        $sql="SELECT infectiondate FROM infection WHERE username='$user' ORDER BY infectiondate DESC LIMIT 1";
+        $sql="SELECT infectiondate FROM infection WHERE id='$id' ORDER BY infectiondate DESC LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $res=$result->fetch_array()[0] ?? '';
         $date1=date_create($res);
@@ -86,9 +86,8 @@
           echo" Υπάρχει πιο πρόσφατη δήλωση νόσησης ";
         else {
           $date=$_POST['infection'];
-          $user=$_SESSION['username'];
           //NA ΓΡΑΨΩ ΣΩΣΤΑ ΤΟ ΙΝΣΕΡΤ ΟΤΑΝ ΦΤΙΑΧΤΕΙ Η ΒΑΣΗ
-          $sql="INSERT INTO infection (username,infectiondate) VALUES ('$user','$date') ";
+          $sql="INSERT INTO infection (id,infectiondate) VALUES ('$id','$date') ";
           if (mysqli_query($conn, $sql)) {
             echo "Η ημερομηνία καταχωρήθηκε επιτυχώς";
           } else {
