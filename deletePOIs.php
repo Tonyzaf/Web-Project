@@ -40,8 +40,7 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class = "dropdown-content">
-      <a href="uploadPOIs.php">Ανέβασμα Δεδομένων</a>
-      <a href="updatePOIs.php">Ενημέρωση Δεδομένων</a>
+      <a href="uploadPOIs.php">Ανέβασμα/Ενημέρωση Δεδομένων</a>
       <a class = "active" href="deletePOIs.php">Διαγραφή Δεδομένων</a>
     </div>
   </div>  

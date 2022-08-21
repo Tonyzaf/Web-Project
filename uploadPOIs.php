@@ -43,8 +43,7 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a class="active" href="uploadPOIs.php">Ανέβασμα Δεδομένων</a>
-                <a href="updatePOIs.php">Ενημέρωση Δεδομένων</a>
+                <a class="active" href="uploadPOIs.php">Ανέβασμα/Ενημέρωση Δεδομένων</a>
                 <a href="deletePOIs.php">Διαγραφή Δεδομένων</a>
             </div>
         </div>
@@ -56,10 +55,10 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
 
     <div class='container loginform'>
         <main>
-            <form action="uploadPOIs.php" method="post" enctype="multipart/form-data">
+            <form action="uploadPOIs.php" method="post" action="processjson.php"enctype="multipart/form-data">
                 Επιλέξτε ένα αρχείο JSON για ανέβασμα:
                 <input type="file" name="fileToUpload" accept=".json" id="fileToUpload">
-                <button type="submit" name="submit">Ανέβασμα Αρχείου</button>
+                <button class = 'uploadbutton' type="submit" name="submit">Ανέβασμα Αρχείου</button>
             </form>
         </main>
     </div>
