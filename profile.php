@@ -27,6 +27,8 @@
   <title>Corona Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./Scripts/Profile.js"></script>
 </head>
 
 <!-- Main Body -->
@@ -54,7 +56,7 @@
 </div>
 
 <!-- Info change -->
-<div class="plaisio2">
+<div class="info">
   <h1> Αλλαγή στοιχείων χρήστη</h1>
   <form  method="post">
 	<table>

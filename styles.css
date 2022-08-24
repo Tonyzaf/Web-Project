@@ -129,7 +129,6 @@ body {
   }
 }
 
-
 /*Search*/
 
 * {
@@ -142,7 +141,6 @@ body {
     padding: 10px;
     font-size: 20px;
     border: 1px solid #0b0c10;
-    width: 80%;
     height: 40px;
     background: #45a29e;
     margin-top: 120px;
@@ -183,39 +181,29 @@ body {
     clear: both;
     display: table;
   }
-  .form .autocomplete {
-    position: relative;
-    display: inline-block;
-    overflow: auto;
-  }
-  .form .autocomplete-items {
-    position: relative;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    top: 100%;
-    left: 0;
-    right: 0;
-  }
-  
-  .form .autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
-  }
-  
-  /*when hovering an item:*/
-  .form .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
-  }
-  
-  /*when navigating through the items using the arrow keys:*/
-  .form .autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
-  }  
+#content{
+  position: absolute;
+}
+.list-group {
+  overflow: wrap !important;
+  float: center ;
+  display: center;
+  position:absolute;
+  font-size: 15px;
+  border: 1px solid #0b0c10;
+  margin-left: 4%;
+  width:237px;
+  background: #45a29e !important;
+  opacity: 0.9;
+  border-radius: 0px 0px 0px 20px !important;
+  color: #fff;
+  z-index: 50;
+}
+.list-group-item{
+  background: #45a29e !important;
+  color: #fff !important;
+
+}
 /*Map*/
 #map {
   position: relative;
@@ -280,8 +268,8 @@ body {
   color: #66fcf1;
 }
 
-/*Change info*/
-.plaisio2 {
+/*info*/
+.info {
   position: relative;
   display: block;
   width: 60%;
@@ -297,10 +285,10 @@ body {
   border-radius: 0.25rem;
   color: #fff;
 }
-.plaisio2 h1{
+.info h1{
   text-align: center;
 }
-.plaisio2 table{
+.info table{
   margin-top: 40px;
   color: #fff;
   font-size: 20px;

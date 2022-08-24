@@ -63,8 +63,11 @@
                             $_SESSION['password'] = $pass;
                             $_SESSION['isadmin'] = $isadmin;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             if($isadmin == 0)
 =======
+=======
+>>>>>>> Stashed changes
                             $_SESSION['id'] = $id;
                             if(!$isadmin)
 >>>>>>> Stashed changes

@@ -9,10 +9,16 @@ CREATE TABLE users (
 );
 
 CREATE TABLE infection (
+<<<<<<< Updated upstream
     id VARCHAR(50) NOT NULL ,
     number INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     infectiondate DATE,
     CONSTRAINT id
+=======
+    id                      INT NOT NULL ,
+    number                  INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    infectiondate           DATE,
+>>>>>>> Stashed changes
     FOREIGN KEY (id) REFERENCES users(id)
 );
 
