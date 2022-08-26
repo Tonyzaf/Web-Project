@@ -38,15 +38,7 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
     <!-- NavBar -->
     <div class="topnav" id="myTopnav">
         <a href="adminindex.php">Στατιστικά</a>
-        <div class="dropdown">
-            <button class="dropbtn" id="active">Διαχείρηση Δεδομένων
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a class="active" href="uploadPOIs.php">Ανέβασμα/Ενημέρωση Δεδομένων</a>
-                <a href="deletePOIs.php">Διαγραφή Δεδομένων</a>
-            </div>
-        </div>
+        <a class="active" href="uploadPOIs.php">Διαχείρηση Δεδομένων</a>
         <a href="logout.php">Αποσύνδεση</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
@@ -55,10 +47,11 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
 
     <div class='container loginform'>
         <main>
-            <form action="uploadPOIs.php" method="post" action="processjson.php"enctype="multipart/form-data">
+            <form method="post" action="processjson.php" enctype="multipart/form-data">
                 Επιλέξτε ένα αρχείο JSON για ανέβασμα:
-                <input type="file" name="fileToUpload" accept=".json" id="fileToUpload">
-                <button class = 'uploadbutton' type="submit" name="submit">Ανέβασμα Αρχείου</button>
+                <input type="file" name="file" accept=".json" id="fileToUpload">
+                <button class='uploadbutton' type="submit" name="submit" style="margin-top: 16px;">Ανέβασμα Αρχείου</button>
+                <button class='deletebutton' type="button" name="submit" onclick={deletedata()} style="background-color: red; color: white; margin-top: 16px;">Διαγραφή Δεδομένων</button>
             </form>
         </main>
     </div>
@@ -66,3 +59,33 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
 </body>
 
 </html>
+
+<?php
+function deletedata()
+{
+    $conn = mysqli_connect("localhost", "root", "", "web");
+    if ($conn === false) {
+        die("Error: could not connect : " . mysqli_connect_error());
+    }
+
+    $files = glob("uploads" . '/*');
+    foreach ($files as $file) {
+        if (is_file($file)) {
+            unlink($file);
+        }
+    }
+
+    $deletepois = "DELETE * FROM pois";
+    $deletetimes = "DELETE * FROM times";
+    $deletetypes = "DELETE * FROM types";
+    
+
+    if ($conn->query($deletepois) === TRUE && $conn->query($deletetimes) === TRUE && $conn->query($deletetypes) === TRUE) {
+        echo "Όλα τα στοιχεία διαγράφτηκαν!!!";
+    } else {
+        echo $conn->error;
+    }
+
+    $conn->close();
+}
+?>

@@ -45,13 +45,13 @@ if (file_exists($path)) {
       }
     }
   }
-  $sql = "INSERT INTO pois (id, poiname, poiaddress, poilat, poilng) ";
+  $sql = "INSERT IGNORE INTO pois (id, poiname, poiaddress, poilat, poilng) ";
   $sql .= "VALUES " . implode(', ', $entries);
 
-  $sql_types = "INSERT INTO poitypes (id, poitype) ";
+  $sql_types = "INSERT IGNORE INTO poitypes (id, poitype) ";
   $sql_types .= "VALUES " . implode(', ', $types);
 
-  $sql_popularity = "INSERT INTO poitimes (id, day, hour, popularity) ";
+  $sql_popularity = "INSERT  IGNORE INTO poitimes (id, day, hour, popularity) ";
   $sql_popularity .= "VALUES " . implode(', ', $popularity);
 
   if ($conn->query($sql) === TRUE && $conn->query($sql_types) === TRUE && $conn->query($sql_popularity) === TRUE) {
