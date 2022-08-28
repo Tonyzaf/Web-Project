@@ -10,6 +10,8 @@ var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={
 }).addTo(map);
 
 var marker = L.marker(latlng).addTo(map);
+var popup = marker.bindPopup("Επισκέπτες τώρα: ταδε").openPopup()
+popup.addTo(map);
 });
 
 

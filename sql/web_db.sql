@@ -9,10 +9,10 @@ CREATE TABLE users (
 );
 
 CREATE TABLE infection (
-    username                VARCHAR(50) NOT NULL ,
-    number                  INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    infectiondate           DATE,
-    FOREIGN KEY (username) REFERENCES users(username)
+    id VARCHAR(50) NOT NULL ,
+    number INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    infectiondate DATE,
+    CONSTRAINT id FOREIGN KEY (id) REFERENCES users(id)
 );
 
 CREATE TABLE pois (

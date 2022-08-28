@@ -28,6 +28,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./Scripts/Searchbar.js"></script>
 </head>
 
 <!-- Main Body -->
@@ -55,10 +57,14 @@
 </div>
 
 <!-- SearchBar -->
-<form class="example" action="action_page.php"style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Αναζήτηση.." name="search" class="input">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+<div>
+  <form method='POST' class="example" style="margin:auto;max-width:300px">
+    <input type="text" placeholder="Αναζήτηση.." name="search" id="search" class="input">
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <div id="content"  class="list-group">
+  </div>
+  </form>
+</div>
 
 <!-- Map -->
 <div id="map"> </div>

@@ -54,7 +54,7 @@
 </div>
 
 <!-- -->
-<div class="plaisio2">
+<div class="info">
   <h1> Ιστορικό Διαγνώσεων με COVID-19</h1>
   <?php
     $id = $_SESSION['id'];

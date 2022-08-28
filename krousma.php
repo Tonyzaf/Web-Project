@@ -86,7 +86,6 @@
           echo" Υπάρχει πιο πρόσφατη δήλωση νόσησης ";
         else {
           $date=$_POST['infection'];
-          //NA ΓΡΑΨΩ ΣΩΣΤΑ ΤΟ ΙΝΣΕΡΤ ΟΤΑΝ ΦΤΙΑΧΤΕΙ Η ΒΑΣΗ
           $sql="INSERT INTO infection (id,infectiondate) VALUES ('$id','$date') ";
           if (mysqli_query($conn, $sql)) {
             echo "Η ημερομηνία καταχωρήθηκε επιτυχώς";

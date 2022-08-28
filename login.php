@@ -62,7 +62,9 @@
                             $_SESSION['username'] = $_POST['username'];
                             $_SESSION['password'] = $pass;
                             $_SESSION['isadmin'] = $isadmin;
-                            
+
+                            $_SESSION['id'] = $id;
+
                             if(!$isadmin)
                                 header("refresh:0;url=index.php");
                             else if ($isadmin)
