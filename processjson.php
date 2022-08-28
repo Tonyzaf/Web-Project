@@ -14,7 +14,8 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
 $path = "Uploads/" . $_FILES["file"]["name"];
 
 if (file_exists($path)) {
-  echo $_FILES["file"]["name"] . " υπάρχει ήδη!";
+  header('HTTP/1.1 307 Temporary Redirect');
+    header('Location: uploadPOIs.php?status=fileexists');
 } else {
   move_uploaded_file($_FILES["file"]["tmp_name"], $path);
   $myfile = fopen($path, "r") or die("Unable to open file!");
@@ -55,7 +56,8 @@ if (file_exists($path)) {
   $sql_popularity .= "VALUES " . implode(', ', $popularity);
 
   if ($conn->query($sql) === TRUE && $conn->query($sql_types) === TRUE && $conn->query($sql_popularity) === TRUE) {
-    echo "Τα αρχεία ανέβηκαν επιτυχώς!";
+    header('HTTP/1.1 307 Temporary Redirect');
+    header('Location: uploadPOIs.php?status=uploadsuccess');
   } else {
     echo $conn->error;
   }
