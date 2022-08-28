@@ -35,16 +35,7 @@
 <!-- NavBar -->
 <div class="topnav" id="myTopnav" >
   <a class="active" href="adminindex.php">Στατιστικά</a>
-  <div class="dropdown">
-    <button class="dropbtn">Διαχείρηση Δεδομένων
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="uploadPOIs.php">Ανέβασμα Δεδομένων</a>
-      <a href="updatePOIs.php">Ενημέρωση Δεδομένων</a>
-      <a href="deletePOIs.php">Διαγραφή Δεδομένων</a>
-    </div>
-  </div>  
+  <a href="uploadPOIs.php">Διαχείρηση Δεδομένων</a>
   <a href="logout.php">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
