@@ -9,7 +9,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE infection (
-    id VARCHAR(50) NOT NULL ,
+    id INT NOT NULL ,
     number INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     infectiondate DATE,
     CONSTRAINT id FOREIGN KEY (id) REFERENCES users(id)
