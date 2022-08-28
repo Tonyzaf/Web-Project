@@ -17,10 +17,6 @@ INSERT INTO entries (entry_time,poi_id,user_id,attendance) VALUES (now(),"50",14
 INSERT INTO entries (entry_time,poi_id,user_id,attendance) VALUES (now(),"50",15,40);
 
 
-/*INSERTS FOR POIs for Map testing*/
-INSERT INTO pois (id,poiname,poiaddress,poilat,poilng) VALUES ("20","silia","20 maddress",38.053599,23.870093);
-INSERT INTO pois (id,poiname,poiaddress,poilat,poilng) VALUES ("50","markellos","50 maddress",38.051104,23.870310);
-
 INSERT INTO poitypes (id,poitype) VALUES ("20","type1");
 INSERT INTO poitypes (id,poitype) VALUES ("20","type2");
 INSERT INTO poitypes (id,poitype) VALUES ("20","type3");

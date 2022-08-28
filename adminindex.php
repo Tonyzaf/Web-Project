@@ -35,7 +35,7 @@
 <!-- NavBar -->
 <div class="topnav" id="myTopnav" >
   <a class="active" href="adminindex.php">Στατιστικά</a>
-  <a href="data.php">Ανέβασμα, Ενημέρωση και Διαγραφή Δεδομένων</a> 
+  <a href="uploadPOIs.php">Διαχείρηση Δεδομένων</a>
   <a href="logout.php">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>

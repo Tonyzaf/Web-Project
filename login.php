@@ -37,7 +37,7 @@
                 </div>
                 <div>
                     <label for="password">Κωδικός πρόσβασης:</label>
-                    <input type="password" name="password" id="password" required="required" minlength="8">
+                    <input type="password" name="password" id="password" required="required">
                 </div>
                 <button class='submitbutton' type="submit">Σύνδεση</button>
                 <footer>Δεν είστε μέλος; <a href="register.php">Εγγραφείτε εδώ!</a></footer>
@@ -62,21 +62,16 @@
                             $_SESSION['username'] = $_POST['username'];
                             $_SESSION['password'] = $pass;
                             $_SESSION['isadmin'] = $isadmin;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                            if($isadmin == 0)
-=======
-=======
->>>>>>> Stashed changes
+
                             $_SESSION['id'] = $id;
+
                             if(!$isadmin)
->>>>>>> Stashed changes
                                 header("refresh:0;url=index.php");
-                            else if ($isadmin == 1)
+                            else if ($isadmin)
                                 header("refresh:0;url=adminindex.php");
                         }
                         else
-                            echo "Τα στοιχεία που συμπληρώσατε δεν αντιστοιχούν σε κάποιο χρήστη";
+                            echo "Ο συνδιασμός ονόματος χρήστη και κωδικού που εισάγατε είναι λανθασμένος.";
                     }
                 ?>
             </form>
