@@ -47,45 +47,32 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
 
     <div class='container loginform'>
         <main>
-            <form method="post" action="processjson.php" enctype="multipart/form-data">
+            <form method="post" action="processjson.php" enctype="multipart/form-data" style="background-color:  rgba(31, 40, 51, .8);color:white;">
                 Επιλέξτε ένα αρχείο JSON για ανέβασμα:
                 <input type="file" name="file" accept=".json" id="fileToUpload">
-                <button class='uploadbutton' type="submit" name="submit" style="margin-top: 16px;">Ανέβασμα Αρχείου</button>
-                <button class='deletebutton' type="button" name="submit" onclick={deletedata()} style="background-color: red; color: white; margin-top: 16px;">Διαγραφή Δεδομένων</button>
+                <button class='uploadbutton' type="submit" name="submit" style="margin-top: 16px; background-color: #66fcf1; color:#1f2833;">Ανέβασμα Αρχείου</button>
+                <button class='deletebutton' type="button" onClick='DeleteAlert()' style="background-color: red; color: white; margin-top: 16px;">Διαγραφή Δεδομένων</button>
+                <?php if (isset($_GET['status'])) { ?>
+                    <?php if (($_GET['status']) == 'uploadsuccess') { ?>
+                        <h1 style="color: white;">Τα δεδομένα ενημερώθηκαν με επιτυχία!</h1>
+                    <?php } elseif (($_GET['status']) == 'deletesuccess') { ?>
+                        <h1 style="color: white;">Τα δεδομένα διαγράφηκαν με επιτυχία!</h1>
+                    <?php } elseif (($_GET['status']) == 'fileexists') { ?>
+                        <h1 style="color: white;">Το αρχείο έχει ήδη ανέβει στη βάση δεδομένων!</h1>
+                <?php }
+                } ?>
             </form>
         </main>
     </div>
-
 </body>
 
 </html>
 
-<?php
-function deletedata()
-{
-    $conn = mysqli_connect("localhost", "root", "", "web");
-    if ($conn === false) {
-        die("Error: could not connect : " . mysqli_connect_error());
-    }
-
-    $files = glob("uploads" . '/*');
-    foreach ($files as $file) {
-        if (is_file($file)) {
-            unlink($file);
+<script>
+    function DeleteAlert() {
+        var r = confirm("Είστε σίγουροι ότι θέλετε να διαγράψετε όλα τα δεδομένα;");
+        if (r == true) {
+            window.location.href = "deletePOIs.php";
         }
     }
-
-    $deletepois = "DELETE * FROM pois";
-    $deletetimes = "DELETE * FROM times";
-    $deletetypes = "DELETE * FROM types";
-    
-
-    if ($conn->query($deletepois) === TRUE && $conn->query($deletetimes) === TRUE && $conn->query($deletetypes) === TRUE) {
-        echo "Όλα τα στοιχεία διαγράφτηκαν!!!";
-    } else {
-        echo $conn->error;
-    }
-
-    $conn->close();
-}
-?>
+</script>
