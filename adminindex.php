@@ -84,15 +84,17 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
             <tbody id="poicovidranking"></tbody>
           </table>
         </div>
+        <div><canvas id="myChart" style="width:100%;max-width:700px"></canvas></div>
       </div>
 
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
       <script type="text/javascript" src="./Scripts/EntryCount.js"></script>
       <script type="text/javascript" src="./Scripts/InfectionCount.js"></script>
       <script type="text/javascript" src="./Scripts/CovidVisitCount.js"></script>
       <script type="text/javascript" src="./Scripts/POIVisitRanking.js"></script>
       <script type="text/javascript" src="./Scripts/POICovidRanking.js"></script>
-
+      <script type="text/javascript" src="./Scripts/AdminCharts.js"></script>
 </body>
 
 </html>
