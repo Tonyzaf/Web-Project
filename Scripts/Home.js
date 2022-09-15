@@ -1,20 +1,3 @@
-// Map 
-navigator.geolocation.getCurrentPosition(function(location) {
-var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-
-var map = L.map('map').setView(latlng, 13)
-
-var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-    maxZoom: 13,
-    subdomains:['mt0','mt1','mt2','mt3']
-}).addTo(map);
-
-var marker = L.marker(latlng).addTo(map);
-var popup = marker.bindPopup("Επισκέπτες τώρα: ταδε").openPopup()
-popup.addTo(map);
-});
-
-
 // Short NavBar
 function myFunction() {
 var x = document.getElementById("myTopnav");

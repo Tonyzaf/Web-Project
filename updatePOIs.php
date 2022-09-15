@@ -15,7 +15,7 @@
 <!-- Session -->
 <?php
   session_start();
-  if(!isset($_SESSION['username'])){
+  if(!isset($_SESSION['username']) || ($_SESSION['isadmin'])==0){
     header("Location: login.php");
   }
 ?>
@@ -26,12 +26,7 @@
 <head>
   <title>Corona Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Ajax -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script> src="https://code.jquery.com/jquery-3.6.1.min.js"</script>
-  <!-- Scripts -->
-  <script src="./Scripts/Visithistory.js"></script>
 </head>
 
 <!-- Main Body -->
@@ -39,36 +34,21 @@
 
 <!-- NavBar -->
 <div class="topnav" id="myTopnav" >
-  <a href="index.php">Αρχική</a>
-  <a href="contacts.php">Λίστα Πιθανών Επαφών με Κρούσμα</a>
-  <a href="krousma.php">Δήλωση Κρούσματος</a>
-  <div class="dropdown" >
-    <button class="dropbtn" id="active">Το Προφίλ Μου
+  <a href="adminindex.php">Στατιστικά</a>
+  <div class="dropdown">
+    <button class="dropbtn" id = "active">Διαχείρηση Δεδομένων
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
-      <a href="profile.php">Επεξεργασία Στοιχείων</a>
-      <a href="diagnosishistory.php">Ιστορικό Διαγνώσεων</a>
-      <a class="active" href="visithistory.php">Ιστορικό Επισκέψεων</a>
+    <div class = "dropdown-content">
+      <a href="uploadPOIs.php">Ανέβασμα Δεδομένων</a>
+      <a class = "active" href="updatePOIs.php">Ενημέρωση Δεδομένων</a>
+      <a href="deletePOIs.php">Διαγραφή Δεδομένων</a>
     </div>
   </div>  
   <a href="logout.php">Αποσύνδεση</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
-</div>
-
-<!-- History -->
-<div class="info">
-    <h1> Ιστορικό Επισκέψεων</h1>
-    <table id="tab">
-      <tr>
-        <th></th>
-        <th>Τοποθεσία</th>
-        <th>Ημερομηνία και ώρα</th>
-      </tr>
-      <tbody id="visit"></tbody>
-    </table>
 </div>
 
 </body>

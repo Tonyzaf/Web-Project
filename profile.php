@@ -26,9 +26,10 @@
 <head>
   <title>Corona Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!-- Ajax -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./Scripts/Profile.js"></script>
+  <script> src="https://code.jquery.com/jquery-3.6.1.min.js"</script>
 </head>
 
 <!-- Main Body -->
@@ -58,10 +59,10 @@
 <!-- Info change -->
 <div class="info">
   <h1> Αλλαγή στοιχείων χρήστη</h1>
-  <form  method="post">
+  <form  method="post" >
 	<table>
 	  <tr>
-		<td>Όνομα χρήστη :</td>
+		<td>Όνομα χρήστη:</td>
 		<td><input type="text" id="name" name="name" value=<?php echo $_SESSION['username']?> class = 'profile-form'></td>
 	  </tr>
     <tr>
@@ -104,7 +105,8 @@
               $_SESSION['username']= $newusername;
             $sqlq= "UPDATE users SET password = '$pass' WHERE username = '$newusername' ";
             if(mysqli_query($conn,$sqlq))
-              echo "'Εγινε η αλλαγή";
+              echo "'Εγινε η αλλαγή" ;
+              header("Refresh:0");
           }
         }    	
       }
