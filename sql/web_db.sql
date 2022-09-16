@@ -19,8 +19,8 @@ CREATE TABLE pois (
     id                      VARCHAR(50) PRIMARY KEY NOT NULL,
     poiname                 VARCHAR(50) NOT NULL,
     poiaddress              VARCHAR(50) NOT NULL,
-    poilat                  FLOAT NOT NULL,
-    poilng                  FLOAT NOT NULL
+    poilat                  DOUBLE NOT NULL,
+    poilng                  DOUBLE NOT NULL
 );
 
 CREATE TABLE poitypes (

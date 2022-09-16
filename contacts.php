@@ -26,9 +26,12 @@
 <head>
   <title>Corona Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- Ajax -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script> src="https://code.jquery.com/jquery-3.6.1.min.js"</script>
+  <script src="./Scripts/Contacts.js"></script>
 </head>
-
 <!-- Main Body -->
 <body class="parallax">
 
@@ -52,6 +55,19 @@
     <i class="fa fa-bars"></i>
   </a>
 </div>
+
+  <!-- Λίστα -->
+  <div class="info">
+    <h1>Λίστα καταστημάτων με επιβεβαιωμένα κρούσματα</h1>
+    <table id="tab">
+      <tr>
+        <th></th>
+        <th>Μέρος που βρεθήκατε</th>
+        <th>Ημερομηνία και ώρα</th>
+      </tr>
+      <tbody id="contact"></tbody>
+    </table>
+  </div>
 
 </body>
 </html>
