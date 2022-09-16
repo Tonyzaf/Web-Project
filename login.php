@@ -40,7 +40,7 @@
                     <input type="password" name="password" id="password" required="required">
                 </div>
                 <button class='submitbutton' type="submit">Σύνδεση</button>
-                <footer>Δεν είστε μέλος; <a href="register.php">Εγγραφείτε εδώ!</a></footer>
+                <footer>Δεν είστε μέλος; <a href="register.php" style="color:white">Εγγραφείτε εδώ!</a></footer>
                 <?php
                     session_start();
                     if(isset($_SESSION['username'])){

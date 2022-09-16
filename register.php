@@ -49,7 +49,7 @@
                     <input type="password" name="pwd2" id="pwd2" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,}" minlength="8">
                 </div>
                 <button className='submitbutton' type="submit" name="submit"  id="submit" onclick="checkform()">Εγγραφή</button>
-                <footer>Είστε ήδη μέλος; <a href="login.php">Συνδεθείτε εδώ</a></footer>
+                <footer>Είστε ήδη μέλος; <a href="login.php" style="color:white">Συνδεθείτε εδώ</a></footer>
                 <?php 
                     if(isset($_POST['submit'])){
                         $username=$_POST['username'];
