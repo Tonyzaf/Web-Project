@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
   <div>
     <form method='POST' id="Formid" class="example" onsubmit="return false" style="margin:auto;max-width:300px">
       <input type="text" placeholder="Αναζήτηση.." name="search" id="search" class="input">
-      <button type="submit" id="submit" name="submit" onclick="results()" ><i class="fa fa-search"></i></button>
+      <button type="submit" id="submit" name="submit" onclick="results()"><i class="fa fa-search"></i></button>
       <div id="content" class="list-group"></div>
     </form>
   </div>
@@ -89,11 +89,13 @@ if (!isset($_SESSION['username'])) {
   });
 
   var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    //Για μεγαλύτερα zoom levels
+    //maxZoom: 20,
     maxZoom: 13,
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
   }).addTo(map);
-  
-  var markers =new L.LayerGroup().addTo(map);
+
+  var markers = new L.LayerGroup().addTo(map);
 
   navigator.geolocation.getCurrentPosition(function(location) {
     var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
@@ -102,8 +104,19 @@ if (!isset($_SESSION['username'])) {
     popup.addTo(map);
   });
 
-  var green = new L.Icon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png'});
-  var orange = new L.Icon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png'});
-  var red = new L.Icon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png'});
-
+  var green = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    iconSize: [24, 36],
+    iconAnchor: [12, 36]
+  });
+  var orange = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+    iconSize: [24, 36],
+    iconAnchor: [12, 36]
+  });
+  var red = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    iconSize: [24, 36],
+    iconAnchor: [12, 36]
+  });
 </script>

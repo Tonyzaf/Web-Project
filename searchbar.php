@@ -15,7 +15,7 @@
   if(isset($_POST['query']))
   {
     $Search = $_POST['query'];
-    $sql = "SELECT poiname FROM pois WHERE poiname LIKE '$Search%'";
+    $sql = "SELECT poiname FROM pois WHERE poiname LIKE '%$Search%'";
     $result = mysqli_query($conn, $sql);
 
     if ($result->num_rows>0)
