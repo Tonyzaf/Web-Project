@@ -9,7 +9,7 @@ if ($conn === false) {
 }
 
 $id = $_SESSION['id'];
-$sql = "SELECT poiname,entry_time FROM entries INNER JOIN pois ON entries.poi_id = pois.id WHERE entries.user_id='$id'";
+$sql = "SELECT poiname,entry_time FROM entries INNER JOIN pois ON entries.poi_id = pois.id WHERE entries.user_id='$id' ORDER BY entry_time ASC";
 $result = $conn->query($sql);
 $count = 1;
 ?>

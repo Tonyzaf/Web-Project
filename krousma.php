@@ -64,6 +64,7 @@
   <div class="check">
     <?php
       if(isset($_POST['infection'])){
+        date_default_timezone_set("Europe/Athens");
         $id = $_SESSION['id'];
         $check=strtotime($_POST['infection']);
         $today = strtotime(date("y-m-d"));
