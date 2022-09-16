@@ -13,16 +13,17 @@ $sql = "SELECT infectiondate FROM infection WHERE id='$id'";
 $result = $conn->query($sql);
 $count = 1;
 ?>
-<?php if ($result->num_rows > 0) {while ($row = $result->fetch_assoc()): ?>
-   <tr>
-    <td><?php echo $count++."η" ?></td>
-    <td><?php echo $row['infectiondate'] ?></td>
-   </tr>
-    
-  <?php endwhile;}
-  else if($result->num_rows == 0) { ?>
+<?php if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) : ?>
+    <tr>
+      <td><?php echo $count++ . "η" ?></td>
+      <td><?php echo $row['infectiondate'] ?></td>
+    </tr>
+
+  <?php endwhile;
+} else if ($result->num_rows == 0) { ?>
   <tr>
     <td><?php echo "--" ?></td>
-    <td><?php echo "--"?></td>
-   </tr>
-  <?php } ?>
+    <td><?php echo "--" ?></td>
+  </tr>
+<?php } ?>

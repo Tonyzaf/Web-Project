@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
   <div>
     <form method='POST' id="Formid" class="example" onsubmit="return false" style="margin:auto;max-width:300px">
       <input type="text" placeholder="Αναζήτηση.." name="search" id="search" class="input">
-      <button type="submit" id="submit" name="submit" onclick="results()" onclick="document.getElementById('search').value = ''"><i class="fa fa-search"></i></button>
+      <button type="submit" id="submit" name="submit" onclick="results()" ><i class="fa fa-search"></i></button>
       <div id="content" class="list-group"></div>
     </form>
   </div>

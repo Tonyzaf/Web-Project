@@ -1,12 +1,6 @@
-function clear(){
-    alert("iamworking");
-   // $("button").click(function(){
-    document.getElementById('search').value = '';
-   // });
-};
-
 function results() {
     var Search = $('#search').val();
+    $('#content').html('');
     if (Search != "") {
         $.ajax({
             url: "map.php",
@@ -42,7 +36,7 @@ function results() {
                 }
             },
             error: function () {
-                alert("Κάτι πήγε στραβά.Προσπαθήστε ξανά.");
+                alert("Δεν βρέθηκαν αποτελέσματα");
             }
         });
     }
