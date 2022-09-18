@@ -29,7 +29,7 @@ function results() {
                     if(userposition.distanceTo(marker.getLatLng()) <= 5000)
                         marker.addTo(markers);
                     // να βαλω 20
-                    if(userposition.distanceTo(marker.getLatLng()) <= 2000)
+                    if(userposition.distanceTo(marker.getLatLng()) <= 20)
                         marker.bindPopup("<center> <b> " + json[i].name + "</b> <br>Σε 1 ώρα αναμένονται: " + json[i].inonehour + " άτομα " + "<br>Σε 2 ώρες αναμένονται: "+ json[i].intwohours + " άτομα " +"<br>"+ "Επισκέπτες κατά πρόσεγγιση τώρα: " +  json[i].lasttwohours + " άτομα " + "<br> <br>" + "Αν θέλετε σημειώστε πόσα άτομα εκτιμάτε πως βρίσκονται αυτή τη στιγμή στο σημείο:" + "<br>" + '<input type="number" id="number" min="0" oninput="this.value = Math.abs(this.value)">' + "<br>" + '<button type="button" id="submitbutton" onclick="Entry()" style="height:40px;">Καταχώρηση επίσκεψης</button>' + "</center>").openPopup();
                     else
                         marker.bindPopup("<center> <b> " + json[i].name + "</b> <br>Σε 1 ώρα αναμένονται: " + json[i].inonehour + " άτομα" + "<br>Σε 2 ώρες αναμένονται: "+ json[i].intwohours + " άτομα " + "<br>" + "Επισκέπτες κατά πρόσεγγιση τώρα: " +  json[i].lasttwohours + " άτομα "   + "<br> <br>" + "</center>").openPopup();
