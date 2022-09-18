@@ -12,6 +12,7 @@ $id = $_SESSION['id'];
 $sql = "SELECT poi_id,entry_time,poiname FROM entries INNER JOIN pois ON entries.poi_id = pois.id WHERE user_id = '$id' AND entry_time > current_date - INTERVAL 7 day";
 $result1 = $conn->query($sql);
 $count = 1;
+$noresult = 0;
 if ($result1->num_rows > 0) {
   while ($row1 = $result1->fetch_array()) {
     $poi_id = $row1['poi_id'];
@@ -34,33 +35,22 @@ if ($result1->num_rows > 0) {
       while ($row2 = $result2->fetch_array()) {
         $user_id = $row2['user_id'];
         $sql = "SELECT id FROM infection WHERE infectiondate >= '$lastsevendays' AND id = '$user_id'";
-        $result = $conn->query($sql);?>
+        $result = $conn->query($sql); ?>
         <?php if ($result->num_rows > 0) {
+          $noresult++;
           while ($row = $result->fetch_assoc()) : ?>
             <tr>
               <td><?php echo $count++ . "η" ?></td>
               <td><?php echo $poiname ?></td>
               <td><?php echo $entry_time  ?></td>
             </tr>
-
           <?php endwhile;
-        } else if ($result->num_rows == 0) { ?>
-          <tr>
-            <td><?php echo "" ?></td>
-            <td><?php echo "--" ?></td>
-            <td><?php echo "--" ?></td>
-          </tr>
-      <?php }
+        }
       }
-    } else if ($result2->num_rows == 0) { ?>
-      <tr>
-        <td><?php echo "" ?></td>
-        <td><?php echo "--" ?></td>
-        <td><?php echo "--" ?></td>
-      </tr>
-  <?php }
+    }
   }
-} else if ($result1->num_rows == 0) { ?>
+} 
+if ($noresult == 0) { ?>
   <tr>
     <td><?php echo "" ?></td>
     <td><?php echo "--" ?></td>
