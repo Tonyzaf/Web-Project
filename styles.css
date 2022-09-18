@@ -428,10 +428,10 @@ td {
   display: inline-block;
   width: 400px;
   height: 180px;
-  font-size: 20px ;
+  font-size: 20px;
   background: #1f2833;
   padding-top: 20px;
-  margin-top: 150px ;
+  margin-top: 150px;
   margin-right: 3%;
   margin-left: 3%;
   text-align: center;
@@ -487,7 +487,7 @@ td {
   #sums {
     position: relative;
     display: block;
-    width: 400px;
+    width: 380px;
     height: 180px;
     font-size: 20px !important;
     margin-top: 100px;
@@ -500,12 +500,12 @@ td {
     display: block;
     width: 80%;
     font-size: 20px;
-    padding-top: 20px;
     margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
   }
   #myChart {
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 }

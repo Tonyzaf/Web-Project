@@ -45,7 +45,7 @@ if (!isset($_SESSION['username']) || ($_SESSION['isadmin']) == 0) {
         </a>
     </div>
 
-    <div class='container loginform'>
+    <div class='container loginform upload'>
         <main>
             <form method="post" action="processjson.php" enctype="multipart/form-data" style="background-color:  rgba(31, 40, 51, .8);color:white;">
                 Επιλέξτε ένα αρχείο JSON για ανέβασμα:
